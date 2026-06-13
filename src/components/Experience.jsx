@@ -1,114 +1,74 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "./FadeIn";
 import { experience } from "../data/portfolio";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Experience() {
-  const [active, setActive] = useState(0);
-  const job = experience[active];
-
   return (
     <section id="experience" style={{ paddingBottom: "6rem" }}>
-      <FadeIn>
-        <h2
-          style={{
-            fontSize: "clamp(22px,4vw,28px)",
-            fontWeight: 600,
-            color: "var(--white)",
-            display: "flex",
-            alignItems: "center",
-            whiteSpace: "nowrap",
-            marginBottom: "40px",
-          }}
-        >
-          <span style={{ fontFamily: "var(--font-mono)", color: "var(--green)", marginRight: "10px", fontSize: "0.85em", fontWeight: 400 }}>02.</span>
-          Where I've Worked
-          <span style={{ flex: 1, height: "1px", background: "var(--slate-dark)", marginLeft: "20px", maxWidth: "240px" }} />
-        </h2>
-      </FadeIn>
+      <div className="sticky-header">
+        <h2>Experience</h2>
+      </div>
 
-      <FadeIn delay={0.1}>
-        <div style={{ display: "flex", gap: "2rem", minHeight: "340px" }} className="exp-container">
-          {/* Tab list */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              borderLeft: "2px solid var(--slate-dark)",
-              flexShrink: 0,
-              minWidth: "160px",
-            }}
-          >
-            {experience.map((job, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
+      <div className="card-list">
+        {experience.map((job, i) => (
+          <FadeIn key={i} delay={i * 0.1}>
+            <a
+              href={job.url || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-item"
+              style={{ display: "grid", textDecoration: "none" }}
+            >
+              {/* Date Column */}
+              <header
                 style={{
-                  background: active === i ? "var(--green-tint, rgba(100,255,218,0.07))" : "none",
-                  border: "none",
-                  borderLeft: active === i ? "2px solid var(--green)" : "2px solid transparent",
-                  marginLeft: "-2px",
-                  padding: "0.75rem 1.25rem",
-                  color: active === i ? "var(--green)" : "var(--slate)",
                   fontFamily: "var(--font-mono)",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                  textAlign: "left",
-                  transition: "all 0.2s",
-                  whiteSpace: "nowrap",
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  color: "var(--slate-dark)",
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase",
+                  paddingTop: "4px",
                 }}
               >
-                {job.company}
-              </button>
-            ))}
-          </div>
+                {job.period}
+              </header>
 
-          {/* Content panel */}
-          <div style={{ flex: 1 }}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -16 }}
-                transition={{ duration: 0.25 }}
-              >
+              {/* Info Column */}
+              <div>
                 <h3
+                  className="card-title"
                   style={{
-                    fontSize: "clamp(16px,3vw,20px)",
+                    fontSize: "16px",
                     fontWeight: 600,
-                    color: "var(--white)",
-                    marginBottom: "0.25rem",
+                    margin: "0 0 0.5rem 0",
+                    display: "inline-flex",
+                    alignItems: "baseline",
+                    lineHeight: 1.2,
                   }}
                 >
-                  {job.role}{" "}
-                  <span style={{ color: "var(--green)" }}>@ {job.company}</span>
+                  <span>
+                    {job.role} · <span style={{ color: "var(--green)" }}>{job.company}</span>
+                  </span>
+                  {job.url && job.url !== "#" && (
+                    <ArrowUpRight size={14} className="arrow-icon" style={{ marginLeft: "4px", flexShrink: 0 }} />
+                  )}
                 </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "13px",
-                    color: "var(--slate)",
-                    marginBottom: "1.5rem",
-                  }}
-                >
-                  {job.period}
-                </p>
 
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.5rem 0" }}>
-                  {job.highlights.map((h, i) => (
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1rem 0" }}>
+                  {job.highlights.map((h, idx) => (
                     <li
-                      key={i}
+                      key={idx}
                       style={{
-                        display: "flex",
-                        gap: "12px",
-                        marginBottom: "0.75rem",
+                        fontSize: "13.5px",
                         color: "var(--slate)",
-                        fontSize: "clamp(13px,2vw,15px)",
-                        lineHeight: 1.65,
+                        lineHeight: 1.5,
+                        marginBottom: "6px",
+                        position: "relative",
+                        paddingLeft: "14px",
                       }}
                     >
-                      <span style={{ color: "var(--green)", flexShrink: 0, marginTop: "4px", fontSize: "12px" }}>▹</span>
+                      <span style={{ position: "absolute", left: 0, color: "var(--slate-dark)", fontSize: "10px" }}>▹</span>
                       {h}
                     </li>
                   ))}
@@ -116,32 +76,16 @@ export default function Experience() {
 
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                   {job.tech.map((t) => (
-                    <span key={t} className="skill-pill">{t}</span>
+                    <span key={t} className="skill-pill">
+                      {t}
+                    </span>
                   ))}
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-      </FadeIn>
-
-      <style>{`
-        @media (max-width: 600px) {
-          .exp-container { flex-direction: column !important; gap: 1rem !important; }
-          .exp-container > div:first-child {
-            flex-direction: row !important;
-            border-left: none !important;
-            border-bottom: 2px solid var(--slate-dark);
-            overflow-x: auto;
-          }
-          .exp-container > div:first-child button {
-            border-left: none !important;
-            margin-left: 0 !important;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-          }
-        }
-      `}</style>
+              </div>
+            </a>
+          </FadeIn>
+        ))}
+      </div>
     </section>
   );
 }

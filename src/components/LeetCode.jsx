@@ -1,166 +1,183 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Code2, TrendingUp, Flame, CheckCircle } from "lucide-react";
+import { ArrowUpRight, Code2, Flame, CheckCircle, Award } from "lucide-react";
 import FadeIn from "./FadeIn";
 import { leetcode } from "../data/portfolio";
-
-const statIcons = [CheckCircle, Code2, Flame, TrendingUp];
 
 export default function LeetCode() {
   return (
     <section id="leetcode" style={{ paddingBottom: "6rem" }}>
-      <FadeIn>
-        <h2
-          style={{
-            fontSize: "clamp(22px,4vw,28px)",
-            fontWeight: 600,
-            color: "var(--white)",
-            display: "flex",
-            alignItems: "center",
-            whiteSpace: "nowrap",
-            marginBottom: "40px",
-          }}
-        >
-          <span style={{ fontFamily: "var(--font-mono)", color: "var(--green)", marginRight: "10px", fontSize: "0.85em", fontWeight: 400 }}>07.</span>
-          Coding Journey
-          <span style={{ flex: 1, height: "1px", background: "var(--slate-dark)", marginLeft: "20px", maxWidth: "200px" }} />
-        </h2>
-      </FadeIn>
+      <div className="sticky-header">
+        <h2>LeetCode</h2>
+      </div>
 
-      <FadeIn delay={0.1}>
-        <div
-          style={{
-            background: "var(--navy-light)",
-            border: "1px solid rgba(100,255,218,0.08)",
-            borderRadius: "8px",
-            padding: "2.5rem",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              flexWrap: "wrap",
-              gap: "1.5rem",
-              marginBottom: "2rem",
-            }}
+      <div className="card-list">
+        <FadeIn>
+          <a
+            href={leetcode.profile}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-item"
+            style={{ display: "grid", textDecoration: "none" }}
           >
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "0.5rem" }}>
-                <Code2 size={22} style={{ color: "var(--green)" }} />
-                <h3 style={{ color: "var(--white)", fontWeight: 600, fontSize: "1.2rem" }}>
-                  LeetCode Practice
-                </h3>
+            {/* Left: Blended tech badge */}
+            <div className="project-badge-column">
+              <div
+                className="project-badge-container"
+                style={{
+                  width: "120px",
+                  height: "72px",
+                  borderRadius: "6px",
+                  background: "rgba(30, 41, 59, 0.4)",
+                  border: "1px solid rgba(148, 163, 184, 0.08)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <Code2 size={24} className="badge-icon" style={{ color: "var(--slate-dark)", transition: "color 0.2s ease-in-out" }} />
               </div>
-              <p style={{ color: "var(--slate)", fontSize: "14px", lineHeight: 1.7, maxWidth: "480px" }}>
+            </div>
+
+            {/* Right: Practice Stats & Details */}
+            <div>
+              <h3
+                className="card-title"
+                style={{
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  margin: "0 0 0.5rem 0",
+                  display: "inline-flex",
+                  alignItems: "baseline",
+                  lineHeight: 1.2,
+                }}
+              >
+                <span>LeetCode Coding Journey</span>
+                <ArrowUpRight size={14} className="arrow-icon" style={{ marginLeft: "4px", flexShrink: 0 }} />
+              </h3>
+
+              <p
+                style={{
+                  fontSize: "13.5px",
+                  color: "var(--slate)",
+                  lineHeight: 1.5,
+                  margin: "0 0 1.25rem 0",
+                }}
+              >
                 {leetcode.message}
               </p>
-            </div>
-            <a
-              href={leetcode.profile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-green"
-              style={{ flexShrink: 0 }}
-            >
-              View Profile ↗
-            </a>
-          </div>
 
-          {/* Stats grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-              gap: "1rem",
-            }}
-          >
-            {leetcode.stats.map((stat, i) => {
-              const Icon = statIcons[i];
-              return (
-                <motion.div
-                  key={stat.label}
-                  whileHover={{ scale: 1.03 }}
-                  style={{
-                    background: "rgba(10,25,47,0.5)",
-                    border: "1px solid rgba(100,255,218,0.06)",
-                    borderRadius: "6px",
-                    padding: "1.25rem",
-                    textAlign: "center",
-                  }}
-                >
-                  <Icon size={20} style={{ color: stat.color, marginBottom: "0.5rem" }} />
-                  <div
-                    style={{
-                      fontSize: "clamp(20px,3vw,28px)",
-                      fontWeight: 700,
-                      color: stat.color,
-                      marginBottom: "0.25rem",
-                      fontFamily: "var(--font-mono)",
-                    }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "12px",
-                      color: "var(--slate)",
-                      fontFamily: "var(--font-mono)",
-                    }}
-                  >
-                    {stat.label}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Progress bars */}
-          <div style={{ marginTop: "2rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
-            {[
-              { label: "SQL & Database Problems", pct: 72, color: "#81b4fe" },
-              { label: "Data Structures & Algorithms", pct: 58, color: "#64ffda" },
-              { label: "String & Array Problems", pct: 65, color: "#ffd700" },
-            ].map((bar) => (
-              <div key={bar.label}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    marginBottom: "6px",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "12px",
-                    color: "var(--slate)",
-                  }}
-                >
-                  <span>{bar.label}</span>
-                  <span style={{ color: bar.color }}>{bar.pct}%</span>
-                </div>
-                <div
-                  style={{
-                    height: "4px",
-                    background: "rgba(255,255,255,0.05)",
-                    borderRadius: "2px",
-                    overflow: "hidden",
-                  }}
-                >
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${bar.pct}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                    style={{
-                      height: "100%",
-                      background: bar.color,
-                      borderRadius: "2px",
-                    }}
-                  />
-                </div>
+              {/* Stats grid */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
+                  gap: "10px",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                {leetcode.stats.map((stat, i) => {
+                  return (
+                    <div
+                      key={stat.label}
+                      style={{
+                        background: "rgba(15, 23, 42, 0.3)",
+                        border: "1px solid rgba(148, 163, 184, 0.04)",
+                        borderRadius: "6px",
+                        padding: "0.75rem 0.5rem",
+                        textAlign: "center",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: 700,
+                          color: stat.color,
+                          fontFamily: "var(--font-mono)",
+                        }}
+                      >
+                        {stat.value}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "10px",
+                          color: "var(--slate)",
+                          marginTop: "2px",
+                        }}
+                      >
+                        {stat.label}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
-          </div>
-        </div>
-      </FadeIn>
+
+              {/* Progress bars */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {[
+                  { label: "SQL & Database Problems", pct: 72, color: "#cbd5e1" },
+                  { label: "Data Structures & Algorithms", pct: 58, color: "var(--green)" },
+                  { label: "String & Array Problems", pct: 65, color: "#94a3b8" },
+                ].map((bar) => (
+                  <div key={bar.label}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        marginBottom: "4px",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "11px",
+                        color: "var(--slate)",
+                      }}
+                    >
+                      <span>{bar.label}</span>
+                      <span style={{ color: bar.color }}>{bar.pct}%</span>
+                    </div>
+                    <div
+                      style={{
+                        height: "3px",
+                        background: "rgba(255, 255, 255, 0.05)",
+                        borderRadius: "2px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${bar.pct}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        style={{
+                          height: "100%",
+                          background: bar.color,
+                          borderRadius: "2px",
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </a>
+        </FadeIn>
+      </div>
+
+      <style>{`
+        .project-badge-column {
+          display: none;
+        }
+        @media (min-width: 768px) {
+          .project-badge-column {
+            display: block;
+          }
+        }
+        .card-item:hover .project-badge-container {
+          border-color: rgba(94, 234, 212, 0.2) !important;
+          background-color: rgba(30, 41, 59, 0.6) !important;
+        }
+        .card-item:hover .badge-icon {
+          color: var(--green) !important;
+        }
+      `}</style>
     </section>
   );
 }

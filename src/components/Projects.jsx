@@ -1,215 +1,174 @@
-import { motion } from "framer-motion";
-import { GitFork, ExternalLink, Terminal, BookOpen, ChefHat } from "lucide-react";
 import FadeIn from "./FadeIn";
 import { projects } from "../data/portfolio";
+import { ArrowUpRight, ExternalLink, Terminal, BookOpen, ChefHat } from "lucide-react";
+
+function GithubIcon({ size = 14 }) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  );
+}
 
 const icons = [Terminal, BookOpen, ChefHat];
 
 export default function Projects() {
   return (
     <section id="projects" style={{ paddingBottom: "6rem" }}>
-      <FadeIn>
-        <h2
-          style={{
-            fontSize: "clamp(22px,4vw,28px)",
-            fontWeight: 600,
-            color: "var(--white)",
-            display: "flex",
-            alignItems: "center",
-            whiteSpace: "nowrap",
-            marginBottom: "12px",
-          }}
-        >
-          <span style={{ fontFamily: "var(--font-mono)", color: "var(--green)", marginRight: "10px", fontSize: "0.85em", fontWeight: 400 }}>03.</span>
-          Featured Projects
-          <span style={{ flex: 1, height: "1px", background: "var(--slate-dark)", marginLeft: "20px", maxWidth: "200px" }} />
-        </h2>
-        <p style={{ color: "var(--slate)", fontSize: "14px", fontFamily: "var(--font-mono)", marginBottom: "40px" }}>
-          A selection of things I've built
-        </p>
-      </FadeIn>
+      <div className="sticky-header">
+        <h2>Projects</h2>
+      </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
+      <div className="card-list">
         {projects.map((proj, i) => {
-          const Icon = icons[i];
-          const isEven = i % 2 === 0;
+          const Icon = icons[i % icons.length];
+          const primaryLink = proj.live || proj.github || "#";
 
           return (
-            <FadeIn key={proj.id} delay={0.1 * i}>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "2rem",
-                  alignItems: "center",
-                }}
-                className="project-row"
+            <FadeIn key={proj.id} delay={i * 0.1}>
+              <a
+                href={primaryLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-item"
+                style={{ display: "grid", textDecoration: "none" }}
               >
-                {/* Image side */}
-                <div style={{ order: isEven ? 1 : 2 }}>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.2 }}
+                {/* Left: Blended tech badge */}
+                <div className="project-badge-column">
+                  <div
+                    className="project-badge-container"
                     style={{
-                      background: "var(--navy-light)",
-                      border: "1px solid rgba(100,255,218,0.1)",
-                      borderRadius: "8px",
-                      aspectRatio: "16/10",
+                      width: "120px",
+                      height: "72px",
+                      borderRadius: "6px",
+                      background: "rgba(30, 41, 59, 0.4)",
+                      border: "1px solid rgba(148, 163, 184, 0.08)",
                       display: "flex",
-                      flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
-                      gap: "1rem",
-                      position: "relative",
-                      overflow: "hidden",
+                      transition: "all 0.2s ease-in-out",
                     }}
                   >
-                    {/* Decorative grid bg */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        backgroundImage:
-                          "radial-gradient(circle at 1px 1px, rgba(100,255,218,0.05) 1px, transparent 0)",
-                        backgroundSize: "24px 24px",
-                      }}
-                    />
-                    <Icon
-                      size={48}
-                      style={{ color: "rgba(100,255,218,0.25)", position: "relative" }}
-                    />
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "11px",
-                        color: "var(--slate-dark)",
-                        letterSpacing: "0.15em",
-                        position: "relative",
-                      }}
-                    >
-                      {proj.title.toUpperCase()}
-                    </span>
-                  </motion.div>
+                    <Icon size={22} className="badge-icon" style={{ color: "var(--slate-dark)", transition: "color 0.2s ease-in-out" }} />
+                  </div>
                 </div>
 
-                {/* Text side */}
-                <div
-                  style={{
-                    order: isEven ? 2 : 1,
-                    textAlign: isEven ? "right" : "left",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      color: "var(--green)",
-                      fontSize: "13px",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    Featured Project
-                  </p>
+                {/* Right: Info */}
+                <div>
                   <h3
+                    className="card-title"
                     style={{
-                      fontSize: "clamp(18px,3vw,24px)",
+                      fontSize: "16px",
                       fontWeight: 600,
-                      color: "var(--white)",
-                      marginBottom: "1.25rem",
+                      margin: "0 0 0.5rem 0",
+                      display: "inline-flex",
+                      alignItems: "baseline",
+                      lineHeight: 1.2,
                     }}
                   >
-                    {proj.title}
+                    <span>{proj.title}</span>
+                    <ArrowUpRight size={14} className="arrow-icon" style={{ marginLeft: "4px", flexShrink: 0 }} />
                   </h3>
 
-                  <div
+                  <p
                     style={{
-                      background: "var(--navy-light)",
-                      border: "1px solid rgba(100,255,218,0.05)",
-                      borderRadius: "6px",
-                      padding: "1.5rem",
-                      marginBottom: "1.5rem",
-                      boxShadow: "0 10px 30px -15px rgba(2,12,27,0.7)",
+                      fontSize: "13.5px",
+                      color: "var(--slate)",
+                      lineHeight: 1.5,
+                      margin: "0 0 0.75rem 0",
                     }}
                   >
-                    <p
-                      style={{
-                        color: "var(--slate)",
-                        lineHeight: 1.7,
-                        fontSize: "clamp(13px,2vw,15px)",
-                      }}
-                    >
-                      {proj.description}
-                    </p>
-                  </div>
+                    {proj.description}
+                  </p>
 
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: "8px",
-                      justifyContent: isEven ? "flex-end" : "flex-start",
-                      marginBottom: "1.5rem",
-                    }}
-                  >
+                  {/* Links Row */}
+                  {(proj.github || proj.live) && (
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "12px",
+                        alignItems: "center",
+                        marginBottom: "0.75rem",
+                      }}
+                      onClick={(e) => e.stopPropagation()} // Prevent double clicks on link
+                    >
+                      {proj.github && proj.github !== "#" && (
+                        <a
+                          href={proj.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="View Source on GitHub"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "4px",
+                            fontSize: "12px",
+                            color: "var(--slate)",
+                            textDecoration: "none",
+                            fontFamily: "var(--font-mono)",
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--green)")}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
+                        >
+                          <GithubIcon size={14} />
+                          <span>Code</span>
+                        </a>
+                      )}
+                      {proj.live && (
+                        <a
+                          href={proj.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="View Live Demo"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "4px",
+                            fontSize: "12px",
+                            color: "var(--slate)",
+                            textDecoration: "none",
+                            fontFamily: "var(--font-mono)",
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--green)")}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
+                        >
+                          <ExternalLink size={14} />
+                          <span>Demo</span>
+                        </a>
+                      )}
+                    </div>
+                  )}
+
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                     {proj.tech.map((t) => (
-                      <span
-                        key={t}
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          fontSize: "12px",
-                          color: "var(--slate)",
-                        }}
-                      >
+                      <span key={t} className="skill-pill">
                         {t}
                       </span>
                     ))}
                   </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "1rem",
-                      justifyContent: isEven ? "flex-end" : "flex-start",
-                    }}
-                  >
-                    {proj.github && (
-                      <a
-                        href={proj.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: "var(--slate-light)" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--green)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate-light)")}
-                      >
-                        <GitFork size={20} />
-                      </a>
-                    )}
-                    {proj.live && (
-                      <a
-                        href={proj.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: "var(--slate-light)" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--green)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate-light)")}
-                      >
-                        <ExternalLink size={20} />
-                      </a>
-                    )}
-                  </div>
                 </div>
-              </div>
+              </a>
             </FadeIn>
           );
         })}
       </div>
 
       <style>{`
-        @media (max-width: 680px) {
-          .project-row { grid-template-columns: 1fr !important; }
-          .project-row > div:first-child { order: 1 !important; }
-          .project-row > div:last-child { order: 2 !important; text-align: left !important; }
-          .project-row > div:last-child > div[style*="flex-end"],
-          .project-row > div:last-child > div:last-child { justify-content: flex-start !important; }
+        .project-badge-column {
+          display: none;
+        }
+        @media (min-width: 768px) {
+          .project-badge-column {
+            display: block;
+          }
+        }
+        .card-item:hover .project-badge-container {
+          border-color: rgba(94, 234, 212, 0.2) !important;
+          background-color: rgba(30, 41, 59, 0.6) !important;
+        }
+        .card-item:hover .badge-icon {
+          color: var(--green) !important;
         }
       `}</style>
     </section>

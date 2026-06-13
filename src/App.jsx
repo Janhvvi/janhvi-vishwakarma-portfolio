@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
-import MobileHeader from "./components/MobileHeader";
-import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
@@ -10,15 +7,10 @@ import Blog from "./components/Blog";
 import Certifications from "./components/Certifications";
 import LeetCode from "./components/LeetCode";
 import Contact from "./components/Contact";
+import { useSpotlight } from "./hooks/useSpotlight";
 
 function SpotlightCursor() {
-  const [pos, setPos] = useState({ x: -999, y: -999 });
-  useEffect(() => {
-    const h = (e) => setPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", h);
-    return () => window.removeEventListener("mousemove", h);
-  }, []);
-
+  useSpotlight();
   return (
     <div
       aria-hidden
@@ -27,67 +19,45 @@ function SpotlightCursor() {
         inset: 0,
         pointerEvents: "none",
         zIndex: 0,
-        background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, rgba(100,255,218,0.04), transparent 40%)`,
-        transition: "background 0.1s ease",
+        background: "radial-gradient(600px circle at var(--cursor-x, -999px) var(--cursor-y, -999px), rgba(29, 78, 216, 0.12), transparent 80%)",
       }}
     />
   );
 }
 
 export default function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-
-  useEffect(() => {
-    const h = () => setIsMobile(window.innerWidth < 1024);
-    window.addEventListener("resize", h);
-    return () => window.removeEventListener("resize", h);
-  }, []);
-
   return (
-    <div style={{ minHeight: "100vh", background: "var(--navy)", position: "relative" }}>
+    <div style={{ minHeight: "100vh", background: "var(--navy)", position: "relative", overflowX: "hidden" }}>
       <SpotlightCursor />
 
-      {isMobile ? (
-        <>
-          <MobileHeader />
-          <main style={{ padding: "6rem 1.5rem 0", maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-            <Hero />
-            <About />
-            <Experience />
-            <Projects />
-            <Skills />
-            <Blog />
-            <Certifications />
-            <LeetCode />
-            <Contact />
-          </main>
-        </>
-      ) : (
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 5fr) minmax(0, 7fr)",
-            gap: "4rem",
-            padding: "0 6rem",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
-          <Sidebar />
-          <main style={{ padding: "6rem 0" }}>
-            <About />
-            <Experience />
-            <Projects />
-            <Skills />
-            <Blog />
-            <Certifications />
-            <LeetCode />
-            <Contact />
-          </main>
-        </div>
-      )}
+      <div className="layout-container">
+        <Sidebar />
+        <main style={{ flex: 1, position: "relative", zIndex: 1 }} className="main-content">
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Blog />
+          <Certifications />
+          <LeetCode />
+          <Contact />
+        </main>
+      </div>
+
+      <style>{`
+        .main-content {
+          padding: 0;
+          max-width: 100%;
+        }
+        @media (min-width: 1024px) {
+          .main-content {
+            margin-left: 50% !important;
+            width: 48% !important;
+            max-width: 600px !important;
+            padding: 6rem 0 6rem 0 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
