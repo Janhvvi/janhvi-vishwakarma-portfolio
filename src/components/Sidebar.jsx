@@ -42,12 +42,12 @@ export default function Sidebar() {
         >
           <h1
             style={{
-              fontSize: "clamp(36px, 6vw, 48px)",
+              fontSize: "clamp(32px, 5vw, 48px)",
               fontWeight: 700,
               color: "var(--white)",
               lineHeight: 1.1,
               marginBottom: "0.5rem",
-              letterSpacing: "-0.02eM",
+              letterSpacing: "-0.02em",
             }}
           >
             <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
@@ -56,7 +56,7 @@ export default function Sidebar() {
           </h1>
           <h2
             style={{
-              fontSize: "clamp(16px, 3vw, 20px)",
+              fontSize: "clamp(15px, 2.5vw, 20px)",
               fontWeight: 500,
               color: "var(--white)",
               marginBottom: "1rem",
@@ -77,8 +77,8 @@ export default function Sidebar() {
           </p>
         </motion.div>
 
-        {/* Desktop Navigation (Hidden on mobile) */}
-        <nav className="desktop-nav" style={{ marginTop: "4rem" }}>
+        {/* Desktop Navigation */}
+        <nav className="desktop-nav" style={{ marginTop: "2.5rem" }}>
           {navLinks.map((link) => (
             <button
               key={link.id}
@@ -91,7 +91,7 @@ export default function Sidebar() {
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                padding: "10px 0",
+                padding: "8px 0",
                 width: "fit-content",
                 textAlign: "left",
               }}
@@ -165,7 +165,6 @@ export default function Sidebar() {
         .sidebar {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
           padding: 4rem 0 2rem 0;
           width: 100%;
         }
@@ -177,14 +176,21 @@ export default function Sidebar() {
             position: sticky;
             top: 0;
             height: 100vh;
-            padding: 6rem 0;
+            max-height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            padding: 4rem 0;
             width: 45%;
-            min-width: 280px;
-            max-width: 400px;
+            min-width: 260px;
+            max-width: 420px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+          }
+          .sidebar::-webkit-scrollbar {
+            display: none;
           }
           .desktop-nav {
             display: flex;
