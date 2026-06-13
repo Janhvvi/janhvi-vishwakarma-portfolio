@@ -27,12 +27,12 @@ function SpotlightCursor() {
 
 export default function App() {
   return (
-    <div style={{ minHeight: "100vh", background: "var(--navy)", position: "relative", overflowX: "hidden" }}>
+    <div style={{ minHeight: "100vh", background: "var(--navy)", position: "relative" }}>
       <SpotlightCursor />
 
       <div className="layout-container">
         <Sidebar />
-        <main style={{ flex: 1, position: "relative", zIndex: 1 }} className="main-content">
+        <main className="main-content">
           <About />
           <Experience />
           <Projects />
@@ -43,21 +43,6 @@ export default function App() {
           <Contact />
         </main>
       </div>
-
-      <style>{`
-        .main-content {
-          padding: 0;
-          max-width: 100%;
-        }
-        @media (min-width: 1024px) {
-          .main-content {
-            margin-left: 50% !important;
-            width: 48% !important;
-            max-width: 600px !important;
-            padding: 6rem 0 6rem 0 !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }

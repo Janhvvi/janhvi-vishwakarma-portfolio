@@ -166,7 +166,7 @@ export default function Sidebar() {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: 4rem 1.5rem 2rem 1.5rem;
+          padding: 4rem 0 2rem 0;
           width: 100%;
         }
         .desktop-nav {
@@ -174,18 +174,17 @@ export default function Sidebar() {
         }
         @media (min-width: 1024px) {
           .sidebar {
-            position: fixed !important;
-            top: 0 !important;
-            left: 50% !important;
-            transform: translateX(-640px) !important;
-            height: 100vh !important;
-            padding: 6rem 0 6rem 0 !important;
-            width: 42% !important;
-            max-width: 560px !important;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            padding: 6rem 0;
+            width: 45%;
+            min-width: 280px;
+            max-width: 400px;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            z-index: 10;
           }
           .desktop-nav {
             display: flex;
