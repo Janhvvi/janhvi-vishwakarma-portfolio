@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Code2, FileText } from "lucide-react";
+import { Mail, Code2 } from "lucide-react";
 import { personal, navLinks } from "../data/portfolio";
 import { useActiveSection } from "../hooks/useActiveSection";
 
@@ -37,7 +37,7 @@ export default function Sidebar() {
   return (
     <aside className="profile-sidebar">
       <div className="sidebar-inner">
-        {/* Top: Identity */}
+        {/* Top: Identity & Navigation */}
         <div className="sidebar-identity">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -72,40 +72,25 @@ export default function Sidebar() {
           </nav>
         </div>
 
-        {/* Bottom: Resume & Social */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          {/* Resume Button */}
-          <a
-            href={personal.resume && personal.resume !== "#" ? personal.resume : "mailto:janhvivish10@gmail.com?subject=Resume%20Request%20-%20Janhvi%20Vishwakarma"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="resume-btn"
-            aria-label="View or Request Janhvi's Resume"
-          >
-            <FileText size={15} />
-            <span>View Resume</span>
-          </a>
-
-          {/* Social Icons */}
-          <div className="sidebar-social">
-            {[
-              { href: personal.github, icon: <GithubIcon size={18} />, label: "GitHub" },
-              { href: personal.linkedin, icon: <LinkedinIcon size={18} />, label: "LinkedIn" },
-              { href: personal.leetcode, icon: <Code2 size={18} />, label: "LeetCode" },
-              { href: `mailto:${personal.email}`, icon: <Mail size={18} />, label: "Email" },
-            ].map(({ href, icon, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="sidebar-social-link"
-              >
-                {icon}
-              </a>
-            ))}
-          </div>
+        {/* Bottom: Social Icons Dock */}
+        <div className="sidebar-social">
+          {[
+            { href: personal.github, icon: <GithubIcon size={18} />, label: "GitHub" },
+            { href: personal.linkedin, icon: <LinkedinIcon size={18} />, label: "LinkedIn" },
+            { href: personal.leetcode, icon: <Code2 size={18} />, label: "LeetCode" },
+            { href: `mailto:${personal.email}`, icon: <Mail size={18} />, label: "Email" },
+          ].map(({ href, icon, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="sidebar-social-link"
+            >
+              {icon}
+            </a>
+          ))}
         </div>
       </div>
     </aside>

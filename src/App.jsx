@@ -9,18 +9,38 @@ import LeetCode from "./components/LeetCode";
 import Contact from "./components/Contact";
 import FloatingPill from "./components/FloatingPill";
 import { useTheme } from "./hooks/useTheme";
+import { useSpotlight } from "./hooks/useSpotlight";
+
+function SpotlightCursor() {
+  useSpotlight();
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        position: "fixed",
+        inset: 0,
+        pointerEvents: "none",
+        zIndex: 0,
+        background: "radial-gradient(650px circle at var(--cursor-x, -999px) var(--cursor-y, -999px), var(--accent-glow-strong), transparent 80%)",
+      }}
+    />
+  );
+}
 
 export default function App() {
   const { isDark, toggleTheme } = useTheme();
 
   return (
     <div style={{ minHeight: "100vh", position: "relative" }}>
-      {/* Ambient Radial Glow Orb */}
+      {/* Interactive Mouse Spotlight Glowing Effect */}
+      <SpotlightCursor />
+
+      {/* Ambient Breathing Background Glow Orb */}
       <div className="orb-container" aria-hidden="true">
         <div className="orb" />
       </div>
 
-      {/* Floating Action Pill (Top, Dark/Light Mode, Copy Email) */}
+      {/* Top-Right Floating Pill (Theme Toggle & Copy Email) */}
       <FloatingPill isDark={isDark} toggleTheme={toggleTheme} />
 
       {/* Two-Column Profile Layout */}
