@@ -206,10 +206,9 @@ body {
 .sidebar-inner {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
-  height: 100%;
-  gap: 36px;
+  gap: 28px;
 }
 
 .sidebar-identity {

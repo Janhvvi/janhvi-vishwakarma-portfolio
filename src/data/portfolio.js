@@ -2,7 +2,7 @@ export const personal = {
   name: "Janhvi Vishwakarma",
   title: "Software Engineer",
   subtitle: "ETL Pipelines · REST APIs · BI Data Workflows",
-  tagline: "Software Engineer with 3+ years of experience building ETL pipelines, REST APIs, and BI-ready data workflows.",
+  // tagline: "Software Engineer with 3+ years of experience building ETL pipelines, REST APIs, and BI-ready data workflows.",
   summary:
     "Software Engineer with 3+ years of experience building ETL pipelines, REST APIs, and BI-ready data workflows using Python, SQL, Django, and cloud-native tools. Experienced in translating business requirements and user stories into technical designs, performing data validation/quality checks, and supporting Fortune 500-scale reporting pipelines. Strong SQL and data engineering background with exposure to Oracle Cloud data management.",
   email: "janhvivish10@gmail.com",
