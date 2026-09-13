@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import FloatingPill from "./components/FloatingPill";
 import { useTheme } from "./hooks/useTheme";
 import { useSpotlight } from "./hooks/useSpotlight";
+import { Analytics } from "@vercel/analytics/react";
 
 function SpotlightCursor() {
   useSpotlight();
@@ -32,6 +33,9 @@ export default function App() {
 
   return (
     <div style={{ minHeight: "100vh", position: "relative" }}>
+      {/* Vercel Web Analytics */}
+      <Analytics />
+
       {/* Interactive Mouse Spotlight Glowing Effect */}
       <SpotlightCursor />
 
