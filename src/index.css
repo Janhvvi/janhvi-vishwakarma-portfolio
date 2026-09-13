@@ -185,7 +185,7 @@ body {
   height: 100vh;
   display: flex;
   align-items: flex-start;
-  padding-top: 84px;
+  padding-top: 48px;
   padding-bottom: 40px;
   overflow-y: auto;
   scrollbar-width: none;
@@ -198,8 +198,8 @@ body {
   .profile-sidebar {
     position: relative;
     height: auto;
-    padding-top: 60px;
-    padding-bottom: 30px;
+    padding-top: 36px;
+    padding-bottom: 24px;
   }
 }
 
@@ -354,13 +354,13 @@ body {
    RIGHT CONTENT AREA & SECTIONS
    ========================================================================== */
 .profile-content {
-  padding: 84px 0 120px;
+  padding: 48px 0 100px;
   min-width: 0;
 }
 
 @media (max-width: 960px) {
   .profile-content {
-    padding: 20px 0 60px;
+    padding: 10px 0 60px;
   }
 }
 
