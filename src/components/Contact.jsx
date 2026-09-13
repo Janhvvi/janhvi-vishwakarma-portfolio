@@ -39,22 +39,11 @@ export default function Contact() {
 
       <FadeIn>
         <h2 className="content-section-label">
-          <span>08.</span> Get In Touch
+          <span>08.</span> Contact me
         </h2>
       </FadeIn>
 
       <FadeIn>
-        <p
-          style={{
-            color: "var(--text-secondary)",
-            lineHeight: 1.75,
-            fontSize: "15px",
-            marginBottom: "24px",
-            maxWidth: "640px",
-          }}
-        >
-          I'm currently open to new backend development, Python/Django, data engineering, and AI integration opportunities. Whether you have an open role, an interesting project, or just want to connect — feel free to drop a message!
-        </p>
 
         {/* Contact Links Grid */}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "40px" }}>
@@ -162,9 +151,6 @@ export default function Contact() {
           lineHeight: 1.6,
         }}
       >
-        <p style={{ margin: 0 }}>
-          Engineered & styled by Janhvi Vishwakarma with React & Tailwind CSS. Deployed on Vercel.
-        </p>
       </footer>
     </section>
   );

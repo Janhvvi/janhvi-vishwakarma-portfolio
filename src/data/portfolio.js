@@ -197,7 +197,7 @@ export const certifications = [
     icon: "🏅",
     description:
       "Validates expertise in core ServiceNow platform administration, user management, security configuration, and platform maintenance.",
-    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/",
+    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/details/certifications/",
   },
   {
     title: "ServiceNow Certified Admin Developer",
@@ -206,7 +206,7 @@ export const certifications = [
     icon: "🏆",
     description:
       "Demonstrates advanced capability to design, build, and deploy custom enterprise applications on ServiceNow using Glide APIs and Flow Designer.",
-    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/",
+    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/details/certifications/",
   },
   {
     title: "Oracle Cloud Data Management",
@@ -215,7 +215,7 @@ export const certifications = [
     icon: "☁️",
     description:
       "Covers Oracle Cloud database architecture, autonomous databases, and enterprise cloud data management best practices.",
-    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/",
+    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/details/certifications/",
   },
 ];
 
