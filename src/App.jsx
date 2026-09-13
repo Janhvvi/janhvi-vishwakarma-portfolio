@@ -3,8 +3,8 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
-import Blog from "./components/Blog";
 import Certifications from "./components/Certifications";
+import Education from "./components/Education";
 import LeetCode from "./components/LeetCode";
 import Contact from "./components/Contact";
 import FloatingPill from "./components/FloatingPill";
@@ -51,8 +51,8 @@ export default function App() {
           <Experience />
           <Projects />
           <Skills />
-          <Blog />
           <Certifications />
+          <Education />
           <LeetCode />
           <Contact />
         </main>

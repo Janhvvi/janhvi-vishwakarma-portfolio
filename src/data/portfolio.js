@@ -1,15 +1,14 @@
 export const personal = {
   name: "Janhvi Vishwakarma",
   title: "Software Engineer",
-  subtitle: "Enterprise Platforms · Distributed Systems · Data Architecture",
-  tagline: "Building scalable backend services, robust APIs, and enterprise data workflows.",
-  intro: `Software Engineer with 3+ years of experience designing and deploying
-    secure REST APIs, data pipelines, and enterprise platforms.
-    Proven track record across client-facing platforms, data engineering, and cloud-based CI/CD workflows.`,
+  subtitle: "ETL Pipelines · REST APIs · BI Data Workflows",
+  tagline: "Software Engineer with 3+ years of experience building ETL pipelines, REST APIs, and BI-ready data workflows.",
+  summary:
+    "Software Engineer with 3+ years of experience building ETL pipelines, REST APIs, and BI-ready data workflows using Python, SQL, Django, and cloud-native tools. Experienced in translating business requirements and user stories into technical designs, performing data validation/quality checks, and supporting Fortune 500-scale reporting pipelines. Strong SQL and data engineering background with exposure to Oracle Cloud data management.",
   email: "janhvivish10@gmail.com",
   phone: "+91 8827409484",
   location: "India",
-  github: "https://github.com/janhvi",
+  github: "https://github.com/Janhvvi",
   linkedin: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/",
   leetcode: "https://leetcode.com/u/Janhvvvi/",
   resume: "#",
@@ -20,30 +19,32 @@ export const navLinks = [
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
-  { id: "blog", label: "Writing" },
   { id: "certifications", label: "Certifications" },
+  { id: "education", label: "Education" },
   { id: "leetcode", label: "LeetCode" },
   { id: "contact", label: "Contact" },
 ];
 
 export const about = {
   paragraphs: [
-    `I'm a backend-focused full stack developer who thrives at the intersection of clean engineering
-    and real-world impact. My journey started with a Computer Science (IoT) degree, which gave me a
-    strong systems foundation before I dove deep into Python and Django building enterprise-grade APIs.`,
-    `At <span class="text-green">i-Connectresources</span>, I architect scalable backend services,
-    secure REST APIs, and RBAC authentication systems. I've delivered real-time dashboards using
-    Plotly, built audit/security logging infrastructure, and monitored data ingestion pipelines
-    for <span class="text-green">Henry Schein</span>, a Fortune 500 enterprise client.`,
-    `I'm equally comfortable in the data engineering space — working with <span class="text-green">Snowflake</span>,
-    <span class="text-green">Apache Airflow</span>, and building ETL tools that automate complex data workflows.
-    I also lead technical pre-sales demonstrations, translating complex backend architecture into
-    clear business value for prospective clients.`,
-    `More recently I've been integrating <span class="text-green">OpenAI</span> and <span class="text-green">Claude APIs</span>
-    into production applications. Outside work, I solve problems on LeetCode and am always
-    looking for the next interesting system design challenge.`,
+    `I'm a Software Engineer with 3+ years of experience specializing in building production ETL pipelines, secure REST APIs, and BI-ready data workflows using <span style="color: var(--accent);">Python, SQL, Django</span>, and cloud-native tools.`,
+    `At <span style="color: var(--accent);">i-Connectresources</span>, I architect enterprise backend services using Django & DRF, delivering secure APIs, RBAC authentication, rate limiting, and audit/security logging. I also monitor and validate daily data ingestion pipelines for a <span style="color: var(--accent);">Fortune 500 client</span>, building SQL data quality checks that maintain reporting accuracy across enterprise datasets.`,
+    `In data engineering, I design and schedule automated workflows using <span style="color: var(--accent);">Apache Airflow</span> and <span style="color: var(--accent);">Snowflake</span>, turning complex business rules into reliable ETL transformation logic. I also serve as a technical point of contact during client engagements, leading architecture discussions and technical product demonstrations.`,
+    `I hold certifications in <span style="color: var(--accent);">ServiceNow</span> (System Admin & Admin Developer) and <span style="color: var(--accent);">Oracle Cloud Data Management</span>, and actively integrate LLMs (<span style="color: var(--accent);">OpenAI API, Claude, Hugging Face</span>) into data platforms.`,
   ],
-  currentStack: ["Python", "Django REST Framework", "Docker", "AWS", "Redis", "Snowflake"],
+  currentStack: [
+    "Python",
+    "SQL",
+    "Django REST Framework",
+    "Apache Airflow",
+    "Snowflake",
+    "Docker",
+    "Kubernetes",
+    "AWS",
+    "ServiceNow",
+    "PostgreSQL",
+    "OpenAI API",
+  ],
 };
 
 export const experience = [
@@ -53,71 +54,93 @@ export const experience = [
     period: "Feb 2024 — Present",
     location: "India",
     url: "#",
-    highlights: [
-      "Architected scalable backend services using Python, Django, and DRF, delivering secure REST APIs for enterprise applications including real-time dashboards and interactive graphs via Plotly.",
-      "Engineered authentication systems, RBAC, rate limiting, and audit/security logging, strengthening platform security and access control across multiple enterprise modules.",
-      "Monitored and validated daily data ingestion pipelines for Henry Schein (Fortune 500), identifying anomalies and ensuring data integrity across enterprise datasets.",
-      "Built SQL-based data quality checks and automated validation workflows, reducing manual verification effort and improving reliability of business intelligence outputs.",
-      "Led end-to-end technical demonstrations of enterprise products for prospective clients — covering architecture walkthroughs, live demos, and Q&A sessions.",
-      "Managed stakeholder communication across technical and non-technical audiences, translating backend solutions into clear business value propositions.",
+    categories: [
+      {
+        title: "Enterprise Backend Platform",
+        points: [
+          "Architected scalable backend services using Python, Django, and DRF, delivering secure REST APIs for enterprise applications including real-time dashboards and interactive graphs via Plotly.",
+          "Engineered authentication systems, RBAC, rate limiting, and audit/security logging, strengthening platform security and access control across multiple enterprise modules.",
+        ],
+      },
+      {
+        title: "Client Engagement (Fortune 500)",
+        points: [
+          "Monitored and validated daily data ingestion pipelines for a Fortune 500 client, identifying anomalies, ensuring data integrity across enterprise datasets, and flagging discrepancies to maintain downstream reporting accuracy.",
+          "Built SQL-based data quality checks and automated validation workflows across ETL pipelines to streamline daily data flow monitoring, reducing manual verification effort and improving reliability of BI reporting outputs.",
+        ],
+      },
+      {
+        title: "Technical Pre-Sales & Stakeholder Management",
+        points: [
+          "Served as technical point of contact during client engagements, gathering requirements and translating user stories into technical solution proposals.",
+          "Led architecture discussions and delivered end-to-end technical product demonstrations (solution architecture walkthroughs, API capabilities, backend workflows) for prospective enterprise clients.",
+          "Reviewed and analyzed RFPs/RFIs to design technically viable solution proposals.",
+        ],
+      },
     ],
-    tech: ["Python", "Django", "DRF", "MySQL", "Redis", "Docker", "ServiceNow", "Plotly"],
+    tech: [
+      "Python",
+      "Django",
+      "DRF",
+      "PostgreSQL",
+      "MySQL",
+      "Redis",
+      "Docker",
+      "ServiceNow",
+      "Plotly",
+      "SQL",
+    ],
   },
   {
     company: "Techment Technology",
     role: "Data Engineer Intern",
-    period: "July 2023 — Dec 2023",
+    period: "Jul 2023 — Dec 2023",
     location: "India",
     url: "#",
-    highlights: [
-      "Contributed to an automated Data Cleaning Tool that preprocessed large enterprise datasets — handling deduplication, null value handling, and enrichment.",
-      "Built Django API endpoints to support ETL operations, enabling smooth data ingestion from multiple heterogeneous sources.",
-      "Designed and scheduled data pipeline tasks using Apache Airflow, ensuring reliable, monitored execution of complex workflow DAGs.",
-      "Integrated Snowflake as the primary data warehouse, optimizing query performance and storage for large-scale analytics workloads.",
+    categories: [
+      {
+        title: "Data Engineering & Pipeline Automation",
+        points: [
+          "Developed a Python-based Data Cleaning Tool for automated dataset preprocessing, handling deduplication, null resolution, and data enrichment at scale.",
+          "Built and deployed RESTful API endpoints using Django to support ETL operations and automated data ingestion workflows.",
+          "Designed and scheduled data pipelines using Snowflake and Apache Airflow, translating business rules into ETL transformation logic and improving processing reliability.",
+        ],
+      },
     ],
-    tech: ["Python", "Apache Airflow", "Snowflake", "Django", "SQL", "ETL"],
+    tech: ["Python", "Apache Airflow", "Snowflake", "Django", "SQL", "ETL", "Pandas", "NumPy"],
   },
 ];
 
 export const projects = [
   {
     id: 1,
-    title: "Dynamic ETL Tool",
-    emoji: "⚙️",
+    title: "Settl - AI-Powered Visual ETL Platform",
     description:
-      "A Python and Tkinter-based ETL pipeline for automated data ingestion, deduplication, null handling, and enrichment — significantly reducing manual data processing effort.",
-    longDescription:
-      "Engineered a full-featured ETL pipeline tool that allows business analysts to upload CSVs, configure cleaning rules (deduplication, null handling, type coercion), and export enriched datasets — all through a simple desktop interface.",
+      "A low-code visual ETL platform built for automated data ingestion, profiling, cleaning, transformation, enrichment, data quality validation, and visual pipeline orchestration.",
     features: [
-      "Automated deduplication and null-value handling",
-      "Configurable data transformation rules",
-      "Dataset enrichment from external sources",
-      "Progress tracking and error reporting",
-      "Export to multiple formats (CSV, Excel)",
+      "Low-code visual data pipeline orchestration and workflow management",
+      "Automated data ingestion, profiling, and rule-based data quality validation",
+      "Transformation, deduplication, null handling, and dataset enrichment at scale",
+      "Interactive data engineering dashboard with React frontend and Django backend",
     ],
-    tech: ["Python", "Tkinter", "Pandas", "NumPy", "SQLite"],
-    github: "#",
+    tech: ["Django REST Framework", "React", "PostgreSQL", "Pandas", "NumPy", "Python"],
+    github: "https://github.com/Janhvvi",
     live: null,
     featured: true,
   },
   {
     id: 2,
     title: "Recipe REST API",
-    emoji: "🍳",
     description:
-      "A production-ready REST API built with Django REST Framework, featuring JWT authentication, advanced filtering, PostgreSQL backend, and fully Dockerized CI/CD pipeline.",
-    longDescription:
-      "Built a comprehensive recipe management API following best practices for production Django development. Includes token-based auth, image upload support, filtering by ingredients/tags, and automated test coverage with GitHub Actions CI.",
+      "A production-ready REST API built with Django REST Framework featuring JWT authentication, advanced filtering, PostgreSQL backend, containerized with Docker and automated via CI/CD pipeline.",
     features: [
-      "JWT authentication and user management",
-      "Advanced filtering by ingredients, tags, and ratings",
-      "Image upload with media file handling",
-      "Full test suite with pytest",
-      "Docker Compose for local and production environments",
-      "GitHub Actions CI/CD pipeline",
+      "JWT token authentication and secure user management",
+      "Advanced filtering by ingredients, tags, and custom criteria",
+      "Media and image upload handling with persistent storage",
+      "Full test suite, Docker containerization, and automated CI/CD pipeline",
     ],
-    tech: ["Python", "Django", "DRF", "PostgreSQL", "Docker", "GitHub Actions", "JWT"],
-    github: "#",
+    tech: ["Python", "Django REST Framework", "PostgreSQL", "Docker", "CI/CD", "JWT"],
+    github: "https://github.com/Janhvvi",
     live: null,
     featured: true,
   },
@@ -127,128 +150,72 @@ export const skills = [
   {
     category: "Languages",
     icon: "code",
-    items: ["Python", "SQL", "JavaScript", "C++", "HTML/CSS"],
+    items: ["SQL", "Python", "C++", "HTML", "CSS", "JavaScript"],
   },
   {
-    category: "Backend",
+    category: "Frameworks & Backend",
     icon: "server",
-    items: ["Django", "Django REST Framework", "REST APIs", "JWT Auth", "RBAC", "Rate Limiting"],
+    items: ["Django", "Django REST Framework (DRF)", "REST APIs", "Plotly", "RBAC Auth"],
   },
   {
     category: "Databases",
     icon: "database",
-    items: ["MySQL", "PostgreSQL", "MongoDB", "Redis", "Snowflake"],
-  },
-  {
-    category: "Cloud & DevOps",
-    icon: "cloud",
-    items: ["Docker", "AWS", "Jenkins", "GitHub Actions", "CI/CD", "Linux"],
+    items: ["MySQL", "MongoDB", "PostgreSQL", "Redis", "Oracle Data Cloud Management"],
   },
   {
     category: "Data Engineering",
     icon: "workflow",
-    items: ["Apache Airflow", "Snowflake", "ETL Pipelines", "Pandas", "NumPy"],
+    items: ["Pandas", "NumPy", "Apache Airflow", "Snowflake", "ETL Development", "Data Mapping"],
+  },
+  {
+    category: "Dev Tools & Cloud",
+    icon: "cloud",
+    items: ["Docker", "Jenkins", "GitHub", "CI/CD", "AWS", "Kubernetes"],
   },
   {
     category: "Enterprise & AI",
     icon: "sparkles",
-    items: ["ServiceNow", "OpenAI API", "Claude API", "Hugging Face", "Plotly"],
+    items: ["ServiceNow", "OpenAI API", "Claude", "Hugging Face"],
   },
 ];
 
-export const blogs = [
+export const education = [
   {
-    title: "Building Secure REST APIs with Django: RBAC, Rate Limiting & Audit Logging",
-    description:
-      "A deep dive into the security patterns I use in production Django APIs — from role-based access control to comprehensive audit trails.",
-    date: "Coming Soon",
-    readTime: "8 min read",
-    tags: ["Django", "Security", "Backend"],
-    url: "#",
-    featured: true,
-  },
-  {
-    title: "ETL Pipelines with Apache Airflow and Snowflake — A Practical Guide",
-    description:
-      "How I designed and scheduled production-grade ETL workflows using Airflow DAGs and Snowflake as the target data warehouse.",
-    date: "Coming Soon",
-    readTime: "6 min read",
-    tags: ["Airflow", "Snowflake", "Data Engineering"],
-    url: "#",
-    featured: false,
-  },
-  {
-    title: "My ServiceNow Journey — From Zero to Certified Admin",
-    description:
-      "Lessons from getting certified and building production apps on the ServiceNow platform, including the LMS I built from scratch.",
-    date: "Coming Soon",
-    readTime: "5 min read",
-    tags: ["ServiceNow", "Certification", "Enterprise"],
-    url: "#",
-    featured: false,
-  },
-  {
-    title: "Integrating OpenAI and Claude APIs into Django Applications",
-    description:
-      "Practical patterns for adding LLM capabilities to existing Django backends — from API wrappers to streaming responses.",
-    date: "Coming Soon",
-    readTime: "7 min read",
-    tags: ["AI", "Django", "OpenAI"],
-    url: "#",
-    featured: false,
-  },
-  {
-    title: "Docker for Django Developers — The Complete Workflow",
-    description:
-      "From local development to production deployments: how I containerize Django apps with Docker Compose and automate CI/CD.",
-    date: "Coming Soon",
-    readTime: "6 min read",
-    tags: ["Docker", "Django", "DevOps"],
-    url: "#",
-    featured: false,
-  },
-  {
-    title: "My LeetCode Journey — Solving SQL & DSA Consistently",
-    description:
-      "Why I started daily LeetCode practice, the patterns I've noticed, and how it's made me a better backend engineer.",
-    date: "Coming Soon",
-    readTime: "4 min read",
-    tags: ["LeetCode", "DSA", "SQL"],
-    url: "#",
-    featured: false,
+    degree: "B.Tech – Computer Science (IoT)",
+    institution: "Shri Shankaracharya Technical Campus",
+    period: "Aug 2020 – July 2024",
+    aggregate: "Aggregate: 82%",
+    description: "Solid foundation in computer science, system architecture, IoT, database management, and data structures.",
   },
 ];
 
 export const certifications = [
   {
-    title: "ServiceNow Certified System Administrator",
+    title: "ServiceNow Certified System ADMIN",
     issuer: "ServiceNow",
-    date: "2024",
+    date: "Certified",
     icon: "🏅",
-    color: "#81b4fe",
     description:
-      "Validates expertise in core ServiceNow administration — including configuration, user management, and platform maintenance.",
-    url: "#",
+      "Validates expertise in core ServiceNow platform administration, user management, security configuration, and platform maintenance.",
+    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/",
   },
   {
     title: "ServiceNow Certified Admin Developer",
     issuer: "ServiceNow",
-    date: "2024",
+    date: "Certified",
     icon: "🏆",
-    color: "#64ffda",
     description:
-      "Demonstrates ability to design, build, and deploy custom applications on the ServiceNow platform using Glide APIs and Flow Designer.",
-    url: "#",
+      "Demonstrates advanced capability to design, build, and deploy custom enterprise applications on ServiceNow using Glide APIs and Flow Designer.",
+    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/",
   },
   {
     title: "Oracle Cloud Data Management",
     issuer: "Oracle",
-    date: "2024",
+    date: "Certified",
     icon: "☁️",
-    color: "#f97316",
     description:
-      "Covers Oracle Cloud database services, autonomous databases, and cloud data management best practices.",
-    url: "#",
+      "Covers Oracle Cloud database architecture, autonomous databases, and enterprise cloud data management best practices.",
+    url: "https://www.linkedin.com/in/janhvi-vishwakarma-b59032239/",
   },
 ];
 

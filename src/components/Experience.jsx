@@ -1,6 +1,5 @@
 import FadeIn from "./FadeIn";
 import { experience } from "../data/portfolio";
-import { ArrowUpRight } from "lucide-react";
 
 export default function Experience() {
   return (
@@ -28,24 +27,49 @@ export default function Experience() {
                     <span className="timeline-company-name">{job.company}</span> · {job.period}
                   </div>
 
-                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 12px 0" }}>
-                    {job.highlights.map((h, idx) => (
-                      <li
-                        key={idx}
-                        style={{
-                          fontSize: "13.5px",
-                          color: "var(--text-secondary)",
-                          lineHeight: 1.6,
-                          marginBottom: "6px",
-                          position: "relative",
-                          paddingLeft: "16px",
-                        }}
-                      >
-                        <span style={{ position: "absolute", left: 0, color: "var(--accent)", fontSize: "10px" }}>▹</span>
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
+                  {job.categories ? (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "14px" }}>
+                      {job.categories.map((cat, cIdx) => (
+                        <div key={cIdx}>
+                          <div
+                            style={{
+                              fontSize: "12px",
+                              fontFamily: "var(--font-mono)",
+                              fontWeight: 600,
+                              color: "var(--text-primary)",
+                              letterSpacing: "0.04em",
+                              marginBottom: "6px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "6px",
+                            }}
+                          >
+                            <span style={{ color: "var(--accent)" }}>◆</span>
+                            <span>{cat.title}</span>
+                          </div>
+
+                          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                            {cat.points.map((p, pIdx) => (
+                              <li
+                                key={pIdx}
+                                style={{
+                                  fontSize: "13.5px",
+                                  color: "var(--text-secondary)",
+                                  lineHeight: 1.6,
+                                  marginBottom: "5px",
+                                  position: "relative",
+                                  paddingLeft: "16px",
+                                }}
+                              >
+                                <span style={{ position: "absolute", left: 0, color: "var(--accent)", fontSize: "10px" }}>–</span>
+                                {p}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
 
                   <div className="timeline-tags">
                     {job.tech.map((t) => (
