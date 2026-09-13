@@ -1,8 +1,9 @@
+import { useState } from "react";
 import FadeIn from "./FadeIn";
 import { personal } from "../data/portfolio";
-import { Mail, Code2 } from "lucide-react";
+import { Mail, Check, ExternalLink } from "lucide-react";
 
-function GithubIcon({ size = 20 }) {
+function GithubIcon({ size = 18 }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
       <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
@@ -11,7 +12,7 @@ function GithubIcon({ size = 20 }) {
   );
 }
 
-function LinkedinIcon({ size = 20 }) {
+function LinkedinIcon({ size = 18 }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -22,97 +23,149 @@ function LinkedinIcon({ size = 20 }) {
 }
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personal.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <section id="contact" style={{ paddingBottom: "6rem", paddingTop: "2rem" }}>
+    <section id="contact" className="content-section" style={{ paddingBottom: "2rem" }}>
       <div className="sticky-header">
         <h2>Contact</h2>
       </div>
 
       <FadeIn>
-        <div style={{ textAlign: "left", maxWidth: "600px" }}>
-          <h2
-            style={{
-              fontSize: "clamp(24px, 5vw, 32px)",
-              fontWeight: 700,
-              color: "var(--white)",
-              marginBottom: "1rem",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Get In Touch
-          </h2>
-          <p
-            style={{
-              color: "var(--slate)",
-              lineHeight: 1.625,
-              fontSize: "14px",
-              marginBottom: "2rem",
-            }}
-          >
-            I'm currently open to new backend development, Python/Django, data engineering, or AI integration opportunities. Whether you have a project idea, a question, or just want to connect — feel free to drop a message!
-          </p>
+        <h2 className="content-section-label">
+          <span>08.</span> Get In Touch
+        </h2>
+      </FadeIn>
 
-          <a href={`mailto:${personal.email}`} className="btn-green" style={{ padding: "0.75rem 1.75rem", fontSize: "0.85rem" }}>
-            Say Hello
+      <FadeIn>
+        <p
+          style={{
+            color: "var(--text-secondary)",
+            lineHeight: 1.75,
+            fontSize: "15px",
+            marginBottom: "24px",
+            maxWidth: "640px",
+          }}
+        >
+          I'm currently open to new backend development, Python/Django, data engineering, and AI integration opportunities. Whether you have an open role, an interesting project, or just want to connect — feel free to drop a message!
+        </p>
+
+        {/* Contact Links Grid */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "40px" }}>
+          {/* Email Row */}
+          <div
+            className="glass-card"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "16px 20px",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <Mail size={18} style={{ color: "var(--accent)" }} />
+              <span style={{ fontSize: "14px", color: "var(--text-primary)", fontFamily: "var(--font-mono)" }}>
+                {personal.email}
+              </span>
+            </div>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <button
+                onClick={handleCopyEmail}
+                className="tag"
+                style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "6px" }}
+              >
+                {copied ? (
+                  <>
+                    <Check size={12} /> Copied!
+                  </>
+                ) : (
+                  "Copy"
+                )}
+              </button>
+              <a
+                href={`mailto:${personal.email}`}
+                className="tag"
+                style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
+              >
+                <span>Compose</span>
+                <ExternalLink size={11} />
+              </a>
+            </div>
+          </div>
+
+          {/* LinkedIn Row */}
+          <a
+            href={personal.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-card"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "16px 20px",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <LinkedinIcon size={18} />
+              <span style={{ fontSize: "14px", color: "var(--text-primary)" }}>LinkedIn Profile</span>
+            </div>
+            <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <span>Connect</span>
+              <ExternalLink size={11} />
+            </span>
+          </a>
+
+          {/* GitHub Row */}
+          <a
+            href={personal.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-card"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "16px 20px",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <GithubIcon size={18} />
+              <span style={{ fontSize: "14px", color: "var(--text-primary)" }}>GitHub Profile</span>
+            </div>
+            <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <span>Follow</span>
+              <ExternalLink size={11} />
+            </span>
           </a>
         </div>
       </FadeIn>
 
-      {/* Social links (visible on mobile only) */}
-      <div className="footer-socials">
-        {[
-          { href: personal.github, icon: <GithubIcon size={20} />, label: "GitHub" },
-          { href: personal.linkedin, icon: <LinkedinIcon size={20} />, label: "LinkedIn" },
-          { href: `mailto:${personal.email}`, icon: <Mail size={20} />, label: "Email" },
-          { href: personal.leetcode, icon: <Code2 size={20} />, label: "LeetCode" },
-        ].map(({ href, icon, label }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            style={{
-              color: "var(--slate)",
-              transition: "color 0.2s",
-              display: "inline-flex",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--green)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
-          >
-            {icon}
-          </a>
-        ))}
-      </div>
-
-      {/* Footer credits */}
+      {/* Footer */}
       <footer
         style={{
-          marginTop: "6rem",
+          marginTop: "60px",
+          paddingTop: "24px",
+          borderTop: "1px solid var(--border)",
           fontSize: "12px",
-          color: "var(--slate-dark)",
-          lineHeight: 1.6,
+          color: "var(--text-muted)",
           fontFamily: "var(--font-mono)",
+          lineHeight: 1.6,
         }}
       >
         <p style={{ margin: 0 }}>
-          Loosely designed in Figma and coded in VS Code by Janhvi Vishwakarma. Built with React and Tailwind CSS, deployed with Vercel.
+          Engineered & styled by Janhvi Vishwakarma with React & Tailwind CSS. Deployed on Vercel.
         </p>
       </footer>
-
-      <style>{`
-        .footer-socials {
-          display: flex;
-          gap: 20px;
-          align-items: center;
-          margin-top: 4rem;
-        }
-        @media (min-width: 1024px) {
-          .footer-socials {
-            display: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

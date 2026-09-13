@@ -1,10 +1,10 @@
 export const personal = {
   name: "Janhvi Vishwakarma",
   title: "Software Engineer",
-  subtitle: "Python · Django · Data Engineering · AI",
-  tagline: "I build scalable systems, enterprise APIs, and AI-powered backends.",
-  intro: `Backend-focused Full Stack Developer with 3+ years of experience designing and deploying
-    secure REST APIs, data pipelines, and enterprise platforms using Python, Django, MySQL, and Docker.
+  subtitle: "Enterprise Platforms · Distributed Systems · Data Architecture",
+  tagline: "Building scalable backend services, robust APIs, and enterprise data workflows.",
+  intro: `Software Engineer with 3+ years of experience designing and deploying
+    secure REST APIs, data pipelines, and enterprise platforms.
     Proven track record across client-facing platforms, data engineering, and cloud-based CI/CD workflows.`,
   email: "janhvivish10@gmail.com",
   phone: "+91 8827409484",
@@ -254,12 +254,17 @@ export const certifications = [
 
 export const leetcode = {
   profile: "https://leetcode.com/u/Janhvvvi/",
+  totalSolved: 308,
+  easy: 162,
+  medium: 120,
+  hard: 26,
+  ranking: "483,699",
   stats: [
-    { label: "Problems Solved", value: "150+", color: "#64ffda" },
-    { label: "SQL Problems", value: "50+", color: "#81b4fe" },
-    { label: "Current Streak", value: "Active", color: "#ffd700" },
-    { label: "Acceptance Rate", value: "~70%", color: "#f97316" },
+    { label: "Total Solved", value: "308", color: "#38bdf8" },
+    { label: "Easy", value: "162", color: "#22c55e" },
+    { label: "Medium", value: "120", color: "#f59e0b" },
+    { label: "Hard", value: "26", color: "#ef4444" },
   ],
   message:
-    "Consistent daily practice focused on SQL, data structures, and algorithms — sharpening the problem-solving instincts that make for better backend engineering.",
+    "Consistent problem-solving across core Data Structures, Dynamic Programming, and SQL optimization — sharpening analytical instincts for enterprise backend engineering.",
 };

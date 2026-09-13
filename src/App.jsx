@@ -7,32 +7,26 @@ import Blog from "./components/Blog";
 import Certifications from "./components/Certifications";
 import LeetCode from "./components/LeetCode";
 import Contact from "./components/Contact";
-import { useSpotlight } from "./hooks/useSpotlight";
-
-function SpotlightCursor() {
-  useSpotlight();
-  return (
-    <div
-      aria-hidden
-      style={{
-        position: "fixed",
-        inset: 0,
-        pointerEvents: "none",
-        zIndex: 0,
-        background: "radial-gradient(600px circle at var(--cursor-x, -999px) var(--cursor-y, -999px), rgba(29, 78, 216, 0.12), transparent 80%)",
-      }}
-    />
-  );
-}
+import FloatingPill from "./components/FloatingPill";
+import { useTheme } from "./hooks/useTheme";
 
 export default function App() {
-  return (
-    <div style={{ minHeight: "100vh", background: "var(--navy)", position: "relative" }}>
-      <SpotlightCursor />
+  const { isDark, toggleTheme } = useTheme();
 
-      <div className="layout-container">
+  return (
+    <div style={{ minHeight: "100vh", position: "relative" }}>
+      {/* Ambient Radial Glow Orb */}
+      <div className="orb-container" aria-hidden="true">
+        <div className="orb" />
+      </div>
+
+      {/* Floating Action Pill (Top, Dark/Light Mode, Copy Email) */}
+      <FloatingPill isDark={isDark} toggleTheme={toggleTheme} />
+
+      {/* Two-Column Profile Layout */}
+      <div className="profile-layout">
         <Sidebar />
-        <main className="main-content">
+        <main className="profile-content">
           <About />
           <Experience />
           <Projects />
