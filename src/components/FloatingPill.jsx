@@ -1,13 +1,9 @@
 import { useState } from "react";
-import { User, Sun, Moon, Mail, Check } from "lucide-react";
+import { Sun, Moon, Mail, Check } from "lucide-react";
 import { personal } from "../data/portfolio";
 
 export default function FloatingPill({ isDark, toggleTheme }) {
   const [copied, setCopied] = useState(false);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personal.email);
@@ -18,16 +14,6 @@ export default function FloatingPill({ isDark, toggleTheme }) {
   return (
     <div className="pill-wrapper">
       <div className="pill">
-        {/* Profile / Scroll to Top */}
-        <div className="pill-item-wrapper">
-          <button className="pill-btn pill-btn--active" onClick={scrollToTop} aria-label="Scroll to top">
-            <User size={18} />
-          </button>
-          <span className="pill-tooltip">Top</span>
-        </div>
-
-        <div className="pill-divider" />
-
         {/* Dark / Light Mode Toggle */}
         <div className="pill-item-wrapper">
           <button
@@ -35,7 +21,7 @@ export default function FloatingPill({ isDark, toggleTheme }) {
             onClick={toggleTheme}
             aria-label={`Switch to ${isDark ? "Light" : "Dark"} mode`}
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            {isDark ? <Sun size={17} /> : <Moon size={17} />}
           </button>
           <span className="pill-tooltip">{isDark ? "Light Mode" : "Dark Mode"}</span>
         </div>
@@ -45,7 +31,7 @@ export default function FloatingPill({ isDark, toggleTheme }) {
         {/* Copy Email */}
         <div className="pill-item-wrapper">
           <button className="pill-btn" onClick={handleCopyEmail} aria-label="Copy Email">
-            {copied ? <Check size={18} style={{ color: "var(--accent)" }} /> : <Mail size={18} />}
+            {copied ? <Check size={17} style={{ color: "var(--accent)" }} /> : <Mail size={17} />}
           </button>
           <span className="pill-tooltip">{copied ? "Copied!" : "Copy Email"}</span>
         </div>
